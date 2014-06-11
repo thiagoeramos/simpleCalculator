@@ -7,7 +7,7 @@ if($_POST){
         $calc->setValor1($_POST['valor1']);
         
     }  catch (RuntimeException $e) {
-        
+        $error = $e->getMessage();
     }
     
     try{
@@ -30,9 +30,13 @@ if($_POST){
     <input name="valor2" type="text">Valor 2 <br />
     <br />
     <input name="operator" type="submit" value="+">
-        <input name="operator" type="submit" value="-">
-            <input name="operator" type="submit" value="/">
-                <input name="operator" type="submit" value="*">
+    <input name="operator" type="submit" value="-">
+    <input name="operator" type="submit" value="/">
+    <input name="operator" type="submit" value="*">
+    <?php 
+        if(isset($error))
+            echo "<p style='color:red'>".utf8_decode($error)."</p>";
+    ?>
 </form>
 
 <br />
