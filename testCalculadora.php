@@ -13,235 +13,171 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
             $this->calc = new Calculadora;
         }
      
-     
-        /**
-        * @covers Calculadora::getNumber1
-        */
-        public function testNumber1IniciacomZero()
-        {     
-            $this->assertEquals(0, $this->calc->getNumber1());
-        }
-    
-     
+   
         /**
          * @covers Calculadora::setValor1
          */
-        public function testsetValor1comNegativo()
-        {
-                          
-         $this->calc->setValor1(-1);
-         $this->assertEquals(0, $this->calc->getNumber1());
-     
-        }
-     
-        
-        /**
-         * @covers Calculadora::setValor1
-         */
-        public function testsetValor1comZero()
-        {
-                          
-         $this->calc->setValor1(0);
-         $this->assertEquals(0, $this->calc->getNumber1());
-     
-        }
-        
-        /**
-         * @covers Calculadora::setValor1
-         */
-        public function testsetValor1comNull()
-        {
-     
-         $this->calc->setValor1(null);
-         $this->assertEquals(0, $this->calc->getNumber1());
-         
-        }
-        
-        /**
-         * @covers Calculadora::setValor1
-         */
-        public function testsetValor1comFalse()
-        {
-        
-       
-         $this->calc->setValor1(false);
-         $this->assertEquals(0, $this->calc->getNumber1());
- 
-        }
-        
-        /**
-         * @covers Calculadora::setValor1
-         */
-        public function testsetValor1comVazio()
-        {
-                 
-         $this->calc->setValor1('');
-         $this->assertEquals(0, $this->calc->getNumber1());
-         
-         $this->calc->setValor1('numero 1');
-         $this->assertEquals(1, $this->calc->getNumber1());
-         
-        }
-           
-        
-        /**
-         * @covers Calculadora::setValor1
-         */
-        public function testsetValor1comString()
-        {
-         
-         $this->calc->setValor1('numero 1');
-         $this->assertEquals(1, $this->calc->getNumber1());
-         
-        }     
-        
-        /**
-         * @covers Calculadora::setValor1
-         */
-        public function testsetValor1InsereNumero()
+        public function testsetValor1()
         {
           
                 $this->calc->setValor1(1);
                 $this->assertEquals(1, $this->calc->getNumber1());
            
         }
-       
-
+              
+          
         /**
-         * @expectedExceptionMessage Calculadora::setValor1
-         */
-        public function testsetValor1RetornaException()
-        {
-     
-             $this->setExpectedException(
-              'RuntimeException', 'Valor 1 inválido para calculo'
-            );
-        
-                $this->calc->setValor1(-1);
-        }
-                      
-       
-    
-     
-        /**
-        * @covers Calculadora::getNumber2
+         * Testando valor impróprios para calculo
+        * @covers Calculadora::setValor1
         */
-        public function testNumber2IniciacomZero()
+        public function testValor1Errors()
         {     
-            $this->assertEquals(0, $this->calc->getNumber2());
-        }
-    
+                $this->assertEquals(0, $this->calc->getNumber1());
+            
+                $this->calc->setValor1(-1);
+                $this->assertEquals(0, $this->calc->getNumber1());         
+                    
+                $this->calc->setValor1(0);
+                $this->assertEquals(0, $this->calc->getNumber1());           
      
-        /**
-         * @covers Calculadora::setValor2
-         */
-        public function testsetValor2comNegativo()
-        {
-                          
-         $this->calc->setValor2(-1);
-         $this->assertEquals(0, $this->calc->getNumber2());
-     
-        }
-     
-        
-        /**
-         * @covers Calculadora::setValor2
-         */
-        public function testsetValor2comZero()
-        {
-                          
-         $this->calc->setValor2(0);
-         $this->assertEquals(0, $this->calc->getNumber2());
-     
-        }
-        
-        /**
-         * @covers Calculadora::setValor2
-         */
-        public function testsetValor2comNull()
-        {
-     
-         $this->calc->setValor2(null);
-         $this->assertEquals(0, $this->calc->getNumber2());
-         
-        }
-        
-        /**
-         * @covers Calculadora::setValor2
-         */
-        public function testsetValor2comFalse()
-        {
-        
+                $this->calc->setValor1(null);
+                $this->assertEquals(0, $this->calc->getNumber1());
        
-         $this->calc->setValor2(false);
-         $this->assertEquals(0, $this->calc->getNumber2());
- 
-        }
-        
-        /**
-         * @covers Calculadora::setValor2
-         */
-        public function testsetValor2comVazio()
-        {
-                 
-         $this->calc->setValor2('');
-         $this->assertEquals(0, $this->calc->getNumber2());
-         
-         $this->calc->setValor2('numero 1');
-         $this->assertEquals(1, $this->calc->getNumber2());
-         
-        }
+                $this->calc->setValor1(false);
+                $this->assertEquals(0, $this->calc->getNumber1()); 
            
+                $this->calc->setValor1('');
+                $this->assertEquals(0, $this->calc->getNumber1());
+         
+                $this->calc->setValor1('numero 1');
+                $this->assertEquals(1, $this->calc->getNumber1());
+         
+                $this->calc->setValor1('numero 1');
+                $this->assertEquals(1, $this->calc->getNumber1());
+         
+        }
         
+                
         /**
+         * Testando Exception
+        * @covers Calculadora::setValor1
+        */
+        public function testValor1Exceptions()
+        {     
+                //$this->assertEquals(0, $this->calc->getNumber1());
+                
+                try{
+                        $this->calc->setValor1(-1);
+                } catch(RuntimeException $e) {                        
+                      $this->assertEquals(0, $this->calc->getNumber1());
+                      
+                            
+                        $this->fail();
+                      return;
+                         
+                }
+        }
+        
+        
+         
+         /**
+         * @covers Calculadora::getNumber1
+         */
+        public function testgetValor1()
+        {          
+                $this->calc->setValor1(1);
+                $this->assertEquals(1, $this->calc->getNumber1());
+                
+           
+        }
+        
+        
+       /**
          * @covers Calculadora::setValor2
          */
-        public function testsetValor2comString()
-        {
-         
-         $this->calc->setValor2('numero 1');
-         $this->assertEquals(1, $this->calc->getNumber2());
-         
-        }     
-        
-        /**
-         * @covers Calculadora::setValor2
-         */
-        public function testsetValor2InsereNumero()
+        public function testsetValor2()
         {
           
                 $this->calc->setValor2(1);
                 $this->assertEquals(1, $this->calc->getNumber2());
            
         }
+              
+          
+        /**
+         * Testando valor impróprios para calculo
+        * @covers Calculadora::setValor2
+        */
+        public function testValor2Errors()
+        {     
+                $this->assertEquals(0, $this->calc->getNumber2());
+            
+                $this->calc->setValor2(-1);
+                $this->assertEquals(0, $this->calc->getNumber2());         
+                    
+                $this->calc->setValor2(0);
+                $this->assertEquals(0, $this->calc->getNumber2());           
+     
+                $this->calc->setValor2(null);
+                $this->assertEquals(0, $this->calc->getNumber2());
        
-
-        /**
-         * @expectedExceptionMessage Calculadora::setValor2
-         */
-        public function testsetValor2RetornaException()
-        {
-     
-             $this->setExpectedException(
-              'RuntimeException', 'Valor -1 inválido para calculo'
-            );
-        
-        $this->calc->setValor2(-1);
+                $this->calc->setValor2(false);
+                $this->assertEquals(0, $this->calc->getNumber2()); 
+           
+                $this->calc->setValor2('');
+                $this->assertEquals(0, $this->calc->getNumber2());
+         
+                $this->calc->setValor2('numero 1');
+                $this->assertEquals(1, $this->calc->getNumber2());
+      
+         
         }
+        
+                
+        /**
+         * Testando exception
+        * @covers Calculadora::setValor2
+        */
+        public function testValor2Exceptions()
+        {     
+                //$this->assertEquals(0, $this->calc->getNumber1());
+                
+                try{
+                        $this->calc->setValor2(-1);
+                } catch(RuntimeException $e) {                        
+                      $this->assertEquals(0, $this->calc->getNumber2());
                       
-
-    
+                            
+                        $this->fail();
+                      return;
+                         
+                }
+        }
+        
+        
+         
+         /**
+         * @covers Calculadora::getNumber2
+         */
+        public function testgetValor2()
+        {          
+                $this->calc->setValor2(1);
+                $this->assertEquals(1, $this->calc->getNumber2());
+                
+           
+        }
+                
+     
      
         
         /**
-         * @covers Calculadora::setOperator
+         * @covers Calculadora::getOperator
          */
         public function testgetOperator()
         {
-            
-                $this->calc->setOperator('oo');                           
-                $this->assertEquals(false,$this->calc->getOperator());
-                
+                   
+                $this->calc->setOperator('*');                           
+                $this->assertEquals('*',$this->calc->getOperator());
      
         }
         
@@ -249,7 +185,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         /**
          * @covers Calculadora::setOperator
          */
-        public function testsetOperatorSucesso()
+        public function testsetOperator()
         {
         
                 $this->calc->setOperator('+');
@@ -264,32 +200,44 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
          
         
                 $this->calc->setOperator('*');
-                $this->assertEquals('*',$this->calc->getOperator());
-                
-                
+                $this->assertEquals('*',$this->calc->getOperator());    
          
         }
         
-        
+                  
         /**
-         * @expectedExceptionMessage Calculadora::setOperator
-         */
-        public function testsetOperatorRetornaException()
-        {
-        
-             $this->setExpectedException(
-              'RuntimeException', 'Operador = inválido para cálculo'
-            );
-        
-               $this->calc->setOperator('=');
-        }
-   
-   
-
-
-           
-                   
+         * Testandoexception
+        * @covers Calculadora::setOperator
+        */
+        public function testsetOperatorExceptions()
+        {     
+                //$this->assertEquals(0, $this->calc->getNumber1());
                 
+                try{
+                        $this->calc->setOperator('^');
+                } catch(RuntimeException $e) {                        
+                      $this->assertEquals(false, $this->calc->getOperator());                      
+                            
+                        $this->fail();
+                      return;
+                         
+                }
+        }
+        
+         /**
+         * Testando operador impróprios para calculo
+        * @covers Calculadora::getOperator
+        */
+        public function testgetOperatorErrors()
+        {     
+                $this->assertEquals(false, $this->calc->getOperator());
+            
+                $this->calc->setOperator('%');
+                $this->assertEquals(false, $this->calc->getOperator());    
+        }
+              
+          
+            
         /**
         * @covers Calculadora::setValor1
         * @covers Calculadora::getNumber1
@@ -379,15 +327,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 
                 
      }
-     
-     
-     
-             
 
-             
-             
-
-           
                    
                 
         /**

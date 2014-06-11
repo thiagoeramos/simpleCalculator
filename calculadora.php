@@ -24,7 +24,7 @@ class Calculadora{
         }else{
              throw new RuntimeException('Valor '.$num.' é inválido para calculo');
         }
-             
+                 
     }
 
         
@@ -57,7 +57,7 @@ class Calculadora{
                   $this->operator='*';    
               break;
               default:
-                  $this->operator=false;
+                 throw new RuntimeException('Operador '.$operator.' é inválido para calculo');
               break;            
             }
     }

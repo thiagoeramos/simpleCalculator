@@ -3,10 +3,22 @@ require_once 'calculadora.php';
 
 if($_POST){
     $calc=new Calculadora();
-    $calc->setValor1($_POST['valor1']);
-    $calc->setValor2($_POST['valor2']);
+    try{
+        $calc->setValor1($_POST['valor1']);
+        
+    }  catch (RuntimeException $e) {
+        
+    }
+    
+    try{
+        $calc->setValor2($_POST['valor2']);        
+    }  catch (RuntimeException $e) {
+        
+    }
+    
     $calc->setOperator($_POST['operator']);
     $calc->setResult();
+    
     $result=$calc->getResult();
 }
 
