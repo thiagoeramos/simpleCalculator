@@ -12,7 +12,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         {
             $this->calc = new Calculadora;
         }
-     
+   
    
         /**
          * @covers Calculadora::setValor1
@@ -24,11 +24,12 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 $this->assertEquals(1, $this->calc->getNumber1());
            
         }
-              
-          
+        
+        
         /**
          * Testando valor impróprios para calculo
         * @covers Calculadora::setValor1
+        * @covers Calculadora::getNumber1
         */
         public function testValor1Errors()
         {     
@@ -57,15 +58,14 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
          
         }
         
-                
+        
         /**
          * Testando Exception
         * @covers Calculadora::setValor1
+        * @covers Calculadora::getNumber1
         */
         public function testValor1Exceptions()
-        {     
-                //$this->assertEquals(0, $this->calc->getNumber1());
-                
+        {              
                 try{
                         $this->calc->setValor1(-1);
                 } catch(RuntimeException $e) {                        
@@ -79,10 +79,10 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         }
         
         
-         
-         /**
-         * @covers Calculadora::getNumber1
-         */
+        /**
+        * @covers Calculadora::setValor1
+        * @covers Calculadora::getNumber1
+        */
         public function testgetValor1()
         {          
                 $this->calc->setValor1(1);
@@ -94,6 +94,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         
        /**
          * @covers Calculadora::setValor2
+         * @covers Calculadora::getNumber2
          */
         public function testsetValor2()
         {
@@ -102,11 +103,12 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 $this->assertEquals(1, $this->calc->getNumber2());
            
         }
-              
+        
           
         /**
          * Testando valor impróprios para calculo
         * @covers Calculadora::setValor2
+        * @covers Calculadora::getNumber2
         */
         public function testValor2Errors()
         {     
@@ -137,6 +139,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         /**
          * Testando exception
         * @covers Calculadora::setValor2
+        * @covers Calculadora::getNumber2
         */
         public function testValor2Exceptions()
         {     
@@ -154,9 +157,9 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 }
         }
         
-        
-         
-         /**
+                 
+         /**          
+         * @covers Calculadora::setValor2
          * @covers Calculadora::getNumber2
          */
         public function testgetValor2()
@@ -166,9 +169,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 
            
         }
-                
-     
-     
+        
         
         /**
          * @covers Calculadora::getOperator
@@ -184,6 +185,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         
         /**
          * @covers Calculadora::setOperator
+         * @covers Calculadora::getOperator
          */
         public function testsetOperator()
         {
@@ -208,25 +210,25 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         /**
          * Testandoexception
         * @covers Calculadora::setOperator
+        * @covers Calculadora::getOperator
         */
         public function testsetOperatorExceptions()
         {     
-                //$this->assertEquals(0, $this->calc->getNumber1());
-                
+            
                 try{
                         $this->calc->setOperator('^');
                 } catch(RuntimeException $e) {                        
-                      $this->assertEquals(false, $this->calc->getOperator());                      
+                      $this->assertEquals(false, $this->calc->getOperator());                     
                             
                         $this->fail();
                       return;
-                         
                 }
         }
         
-         /**
-         * Testando operador impróprios para calculo
-        * @covers Calculadora::getOperator
+        /**
+        * Testando operador impróprios para calculo
+        * @covers Calculadora::setOperator
+        * @covers Calculadora::getOperator       
         */
         public function testgetOperatorErrors()
         {     
@@ -234,15 +236,12 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
             
                 $this->calc->setOperator('%');
                 $this->assertEquals(false, $this->calc->getOperator());    
-        }
-              
+        }              
           
             
         /**
         * @covers Calculadora::setValor1
-        * @covers Calculadora::getNumber1
         * @covers Calculadora::setValor2
-        * @covers Calculadora::getNumber2
         * @covers Calculadora::setOperator
         * @covers Calculadora::getOperator
         * @covers Calculadora::setResult
@@ -251,35 +250,21 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
         */
         public function testgetResultSucess(){
           
-                $this->calc->setValor1(5);
-                
+                $this->calc->setValor1(5);                
                 $this->calc->setValor2(10);
-                
-                
-                
-                $this->assertEquals(false,$this->calc->getOperator());
-                
-                 $this->calc->setOperator('*');                           
-                $this->assertEquals('*',$this->calc->getOperator());
-               
-               
-                
-                $this->calc->setOperator('*');
-                
-                
-                
+                $this->assertEquals(false,$this->calc->getOperator());                
+                $this->calc->setOperator('*');                           
+                $this->assertEquals('*',$this->calc->getOperator());                
+                $this->calc->setOperator('*');       
                 $this->calc->setResult();
                 $this->assertEquals(50,$this->calc->getResult());
-     }
+        }
      
      
        /**
         * @covers Calculadora::setValor1
-        * @covers Calculadora::getNumber1
         * @covers Calculadora::setValor2
-        * @covers Calculadora::getNumber2
         * @covers Calculadora::setOperator
-        * @covers Calculadora::getOperator
         * @covers Calculadora::setResult
         * @covers Calculadora::getResult
         * 
@@ -326,17 +311,12 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 $this->assertEquals(0,$this->calc->getResult());
                 
                 
-     }
-
-                   
+        }      
                 
         /**
         * @covers Calculadora::setValor1
-        * @covers Calculadora::getNumber1
         * @covers Calculadora::setValor2
-        * @covers Calculadora::getNumber2
         * @covers Calculadora::setOperator
-        * @covers Calculadora::getOperator
         * @covers Calculadora::setResult
         * @covers Calculadora::getResult
         * 
@@ -352,7 +332,7 @@ class testCalculadora extends PHPUnit_Framework_TestCase{
                 
                 $this->calc->setResult();
                 $this->assertEquals(0,$this->calc->getResult());
-     }
+        }
      
      
              
