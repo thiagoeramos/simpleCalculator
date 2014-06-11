@@ -3,17 +3,20 @@ require_once 'calculadora.php';
 
 if($_POST){
     $calc=new Calculadora();
+    
+    $error=false;
+    
     try{
         $calc->setValor1($_POST['valor1']);
         
     }  catch (RuntimeException $e) {
-        $error = $e->getMessage();
+        $error.= $e->getMessage();
     }
     
     try{
         $calc->setValor2($_POST['valor2']);        
     }  catch (RuntimeException $e) {
-        
+         $error.= '<br />'.$e->getMessage();
     }
     
     $calc->setOperator($_POST['operator']);
@@ -34,8 +37,9 @@ if($_POST){
     <input name="operator" type="submit" value="/">
     <input name="operator" type="submit" value="*">
     <?php 
-        if(isset($error))
+        if($error){
             echo "<p style='color:red'>".utf8_decode($error)."</p>";
+        }
     ?>
 </form>
 
