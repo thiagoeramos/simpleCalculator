@@ -1,10 +1,10 @@
 <?
 require_once 'calculadora.php';
 
+$error=false;
+
 if($_POST){
     $calc=new Calculadora();
-    
-    $error=false;
     
     try{
         $calc->setValor1($_POST['valor1']);
