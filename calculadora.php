@@ -14,7 +14,7 @@
 * @deprecated   File deprecated in Release 2.0.0
 */
 
-namespace calculadora;
+//namespace calculadora;
 
 class Calculadora
 {
