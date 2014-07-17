@@ -27,8 +27,7 @@ if($_POST){
 
 ?>
 
-
-<form action="" method="post" >
+<form action="" method="post" name="calculadora" >
     <input name="valor1" type="text">Valor 1 <br />
     <input name="valor2" type="text">Valor 2 <br />
     <br />
