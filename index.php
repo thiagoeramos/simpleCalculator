@@ -1,14 +1,12 @@
 <?
+// require de classe principal
 require_once 'calculadora.php';
-
 $error=false;
 
 if($_POST){
-    $calc=new Calculadora();
-    
+    $calc=new Calculadora();    
     try{
-        $calc->setValor1($_POST['valor1']);
-        
+        $calc->setValor1($_POST['valor1']);        
     }  catch (RuntimeException $e) {
         $error.= $e->getMessage();
     }
@@ -21,7 +19,7 @@ if($_POST){
     
     $calc->setOperator($_POST['operator']);
     $calc->setResult();
-    
+    // pega resultados
     $result=$calc->getResult();
 }
 
@@ -42,7 +40,7 @@ if($_POST){
     ?>
 </form>
 
-<br /><br />
+<br />
 <?
 
 if(isset($result)){
