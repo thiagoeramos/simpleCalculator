@@ -42,7 +42,7 @@ if($_POST){
     ?>
 </form>
 
-<br /><br /><br />
+<br /><br />
 <?
 
 if(isset($result)){
