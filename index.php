@@ -3,7 +3,10 @@
 require_once 'calculadora.php';
 $error=false;
 
+// se foi postado algo faz os calculos
 if($_POST){
+    
+    //iniciando a classe
     $calc=new Calculadora();    
     try{
         $calc->setValor1($_POST['valor1']);        
@@ -17,8 +20,10 @@ if($_POST){
          $error.= '<br />'.$e->getMessage();
     }
     
+    //setando operadores
     $calc->setOperator($_POST['operator']);
     $calc->setResult();
+    
     // pega resultados
     $result=$calc->getResult();
 }
